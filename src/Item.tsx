@@ -39,7 +39,15 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
           type="button"
         ><i className="fa fa-minus fa-fw"></i></button>
         {' '}
-        {count}
+        <div
+          style={{
+            display: 'inline-block',
+            textAlign: 'center',
+            width: '27.5px'
+          }}
+        >
+          {count}
+        </div>
         {' '}
         <button
           style={{
