@@ -38,7 +38,7 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
           }}
           onClick={onDecrement}
           type="button"
-        ><i className="fa fa-minus fa-fw"></i></button>
+        ><i className="fa fa-minus fa-lg fa-fw"></i></button>
         {' '}
         <div
           style={{
@@ -58,7 +58,7 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
           }}
           onClick={onIncrement}
           type="button"
-        ><i className="fa fa-plus fa-fw"></i></button>
+        ><i className="fa fa-plus fa-lg fa-fw"></i></button>
       </div>
     </div>
   );
