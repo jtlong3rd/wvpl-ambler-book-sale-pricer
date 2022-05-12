@@ -3,8 +3,6 @@ import { ReactNode, useMemo, useState } from 'react';
 import { Item } from './Item';
 import { Total } from './Total';
 
-import './App.css';
-
 interface ItemSpec {
   key: string;
   name: ReactNode;
