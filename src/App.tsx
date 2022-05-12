@@ -59,7 +59,7 @@ function App() {
         memo + pricingRule(itemCounts[key] ?? 0),
       0
     ).toFixed(2),
-    [itemCounts, itemSpecs]
+    [itemCounts]
   );
 
   return (
