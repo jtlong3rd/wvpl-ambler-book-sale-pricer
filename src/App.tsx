@@ -1,6 +1,7 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 
 import { Item } from './Item';
+import { Total } from './Total';
 
 import './App.css';
 
@@ -54,6 +55,15 @@ function App() {
     )
   );
 
+  const total = useMemo(
+    () => itemSpecs.reduce(
+      (memo, { key, pricingRule }) =>
+        memo + pricingRule(itemCounts[key] ?? 0),
+      0
+    ),
+    [itemCounts, itemSpecs]
+  );
+
   return (
     <div
       className="App"
@@ -62,6 +72,7 @@ function App() {
         flexDirection: 'column'
       }}
     >
+      <Total total={total} />
       {
         itemSpecs.map(
           itemSpec => (
