@@ -81,7 +81,8 @@ function App() {
     <div
       style={{
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        maxWidth: '1000px',
       }}
     >
       <div
