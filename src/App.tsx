@@ -31,8 +31,8 @@ const itemSpecs: ItemSpec[] = [
     pricingRule: count => count * 2
   },
   {
-    key: 'adult-nonfiction',
-    name: 'General Adult Nonfiction',
+    key: 'adult-hardcover-nonfiction',
+    name: 'General Adult Hardcover and Nonfiction',
     pricingRule: count => count
   },
   {
