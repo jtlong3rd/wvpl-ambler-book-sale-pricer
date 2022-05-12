@@ -28,7 +28,7 @@ const itemSpecs: ItemSpec[] = [
   {
     key: 'trade-paperback',
     name: 'Trade Paperback',
-    pricingRule: count => Math.floor(count / 3) + (count % 3 * 0.75)
+    pricingRule: count => Math.floor(count / 3) * 2 + (count % 3 * 0.75)
   },
   {
     key: 'adult-paperback',
