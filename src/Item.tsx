@@ -18,6 +18,7 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        maxWidth: '1000px',
       }}
     >
       <div>

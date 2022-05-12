@@ -82,14 +82,19 @@ function App() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        maxWidth: '1000px',
       }}
     >
-      <div
+      <header
         style={{
-          margin: '1em',
+          marginBottom: '1em',
+          padding: '1em 0',
           display: 'flex',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          position: 'sticky',
+          top: 0,
+          borderBottom: '1px solid black',
+          zIndex: 1,
+          backgroundColor: '#CCC',
         }}
       >
         <Total total={total} />
@@ -98,7 +103,7 @@ function App() {
             setItemCounts(initialCounts);
           }}
         />
-      </div>
+      </header>
       {
         itemSpecs.map(
           itemSpec => (
