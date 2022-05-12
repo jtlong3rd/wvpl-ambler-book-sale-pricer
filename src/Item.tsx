@@ -1,4 +1,6 @@
-import { CSSProperties, ReactNode } from 'react';
+import { ReactNode } from 'react';
+
+import { baseButtonStyling } from './App';
 
 interface Props {
   name: ReactNode;
@@ -6,17 +8,6 @@ interface Props {
   onIncrement: () => void;
   onDecrement: () => void;
 }
-
-const buttonStyling: CSSProperties = {
-  margin: '0 1em',
-  border: 'none',
-  borderRadius: '2em',
-  background: 'black',
-  color: 'white',
-  fontWeight: 'bold',
-  width: '60px',
-  height: '60px',
-};
 
 export function Item({ name, count, onIncrement, onDecrement }: Props) {
   return (
@@ -39,7 +30,11 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
         }}
       >
         <button
-          style={buttonStyling}
+          style={{
+            ...baseButtonStyling,
+            width: '60px',
+            height: '60px',
+          }}
           onClick={onDecrement}
           type="button"
         ><i className="fa fa-minus fa-fw"></i></button>
@@ -47,7 +42,11 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
         {count}
         {' '}
         <button
-          style={buttonStyling}
+          style={{
+            ...baseButtonStyling,
+            width: '60px',
+            height: '60px'
+          }}
           onClick={onIncrement}
           type="button"
         ><i className="fa fa-plus fa-fw"></i></button>

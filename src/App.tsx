@@ -1,7 +1,22 @@
-import { ReactNode, useMemo, useState } from 'react';
+import {
+  CSSProperties,
+  ReactNode,
+  useMemo,
+  useState
+} from 'react';
 
 import { Item } from './Item';
+import { ResetButton } from './ResetButton';
 import { Total } from './Total';
+
+export const baseButtonStyling: CSSProperties = {
+  margin: '0 1em',
+  border: 'none',
+  borderRadius: '2em',
+  background: 'black',
+  color: 'white',
+  fontWeight: 'bold',
+};
 
 interface ItemSpec {
   key: string;
@@ -42,16 +57,16 @@ const itemSpecs: ItemSpec[] = [
   }
 ];
 
-function App() {
-  const [itemCounts, setItemCounts] = useState(
-    () => itemSpecs.reduce(
-      (memo, itemSpec) => {
-        memo[itemSpec.key] = 0;
+const initialCounts = itemSpecs.reduce(
+  (memo, itemSpec) => {
+    memo[itemSpec.key] = 0;
 
-        return memo;
-      }, {} as Record<string, number>
-    )
-  );
+    return memo;
+  }, {} as Record<string, number>
+);
+
+function App() {
+  const [itemCounts, setItemCounts] = useState(initialCounts);
 
   const total = useMemo(
     () => itemSpecs.reduce(
@@ -69,7 +84,20 @@ function App() {
         flexDirection: 'column'
       }}
     >
-      <Total total={total} />
+      <div
+        style={{
+          margin: '1em',
+          display: 'flex',
+          justifyContent: 'space-between'
+        }}
+      >
+        <Total total={total} />
+        <ResetButton
+          onReset={() => {
+            setItemCounts(initialCounts);
+          }}
+        />
+      </div>
       {
         itemSpecs.map(
           itemSpec => (
