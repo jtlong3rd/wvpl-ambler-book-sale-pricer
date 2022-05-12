@@ -21,7 +21,11 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
         maxWidth: '1000px',
       }}
     >
-      <div>
+      <div
+        style={{
+          fontWeight: 'bold',
+        }}
+      >
         {name}
       </div>
       <div
