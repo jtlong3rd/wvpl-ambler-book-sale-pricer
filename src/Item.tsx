@@ -14,7 +14,7 @@ const buttonStyling: CSSProperties = {
 
 export function Item({ name, count, onIncrement, onDecrement }: Props) {
   return (
-    <span
+    <div
       style={{
         fontSize: '1.2em',
         margin: '1em',
@@ -25,8 +25,11 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
       <div>
         {name}
       </div>
-      <div>
-      {' '}
+      <div
+        style={{
+          whiteSpace: 'nowrap',
+        }}
+      >
       <button
         style={buttonStyling}
         onClick={onDecrement}
@@ -41,6 +44,6 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
         type="button"
       >+</button>
       </div>
-    </span>
+    </div>
   );
 }
