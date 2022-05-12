@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 interface Props {
-  total: number;
+  total: ReactNode;
 }
 
 export function Total({ total }: Props) {

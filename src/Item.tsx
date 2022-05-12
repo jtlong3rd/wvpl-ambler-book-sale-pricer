@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 interface Props {
   name: ReactNode;
@@ -7,10 +7,16 @@ interface Props {
   onDecrement: () => void;
 }
 
+const buttonStyling: CSSProperties = {
+  margin: '0 1em',
+  padding: '0.5em 2em'
+};
+
 export function Item({ name, count, onIncrement, onDecrement }: Props) {
   return (
     <span
       style={{
+        fontSize: '1.2em',
         margin: '1em',
         display: 'flex',
         justifyContent: 'space-between'
@@ -21,11 +27,19 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
       </div>
       <div>
       {' '}
-      <button onClick={onDecrement} type="button">-</button>
+      <button
+        style={buttonStyling}
+        onClick={onDecrement}
+        type="button"
+      >-</button>
       {' '}
       {count}
       {' '}
-      <button onClick={onIncrement} type="button">+</button>
+      <button
+        style={buttonStyling}
+        onClick={onIncrement}
+        type="button"
+      >+</button>
       </div>
     </span>
   );
