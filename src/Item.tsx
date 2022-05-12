@@ -8,6 +8,7 @@ interface Props {
 }
 
 const buttonStyling: CSSProperties = {
+  margin: '0 1em',
   border: 'none',
   borderRadius: '2em',
   background: 'black',
@@ -34,21 +35,22 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
       <div
         style={{
           whiteSpace: 'nowrap',
+          fontSize: '1.2em'
         }}
       >
-      <button
-        style={buttonStyling}
-        onClick={onDecrement}
-        type="button"
-      ><i className="fa fa-minus fa-fw"></i></button>
-      {' '}
-      {count}
-      {' '}
-      <button
-        style={buttonStyling}
-        onClick={onIncrement}
-        type="button"
-      ><i className="fa fa-plus fa-fw"></i></button>
+        <button
+          style={buttonStyling}
+          onClick={onDecrement}
+          type="button"
+        ><i className="fa fa-minus fa-fw"></i></button>
+        {' '}
+        {count}
+        {' '}
+        <button
+          style={buttonStyling}
+          onClick={onIncrement}
+          type="button"
+        ><i className="fa fa-plus fa-fw"></i></button>
       </div>
     </div>
   );
