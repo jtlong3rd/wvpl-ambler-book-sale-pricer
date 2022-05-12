@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { Item } from './Item';
 
@@ -44,6 +44,16 @@ const itemSpecs: ItemSpec[] = [
 ];
 
 function App() {
+  const [itemCounts, setItemCounts] = useState(
+    () => itemSpecs.reduce(
+      (memo, itemSpec) => {
+        memo[itemSpec.key] = 0;
+
+        return memo;
+      }, {} as Record<string, number>
+    )
+  );
+
   return (
     <div
       className="App"
@@ -58,9 +68,19 @@ function App() {
             <Item
               key={itemSpec.key}
               name={itemSpec.name}
-              count={0}
-              onDecrement={() => {}}
-              onIncrement={() => {}}
+              count={itemCounts[itemSpec.key]}
+              onDecrement={() => setItemCounts(itemCounts => ({
+                ...itemCounts,
+                [itemSpec.key]: Math.max(
+                  itemCounts[itemSpec.key] - 1,
+                  0
+                )
+              }))}
+              onIncrement={() => setItemCounts(itemCounts => ({
+                ...itemCounts,
+                [itemSpec.key]:
+                  itemCounts[itemSpec.key] + 1,
+              }))}
             />
           )
         )
