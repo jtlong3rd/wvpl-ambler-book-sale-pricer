@@ -93,6 +93,7 @@ function App() {
           position: 'sticky',
           top: 0,
           borderBottom: '1px solid black',
+          boxShadow: '0 1px 1px #00000066',
           zIndex: 1,
           backgroundColor: '#CCC',
         }}
