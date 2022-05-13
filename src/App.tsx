@@ -28,7 +28,7 @@ const itemSpecs: ItemSpec[] = [
   {
     key: 'coffee-table',
     name: 'Coffee Table Books',
-    pricingRule: count => count * 2
+    pricingRule: count => count
   },
   {
     key: 'adult-hardcover-nonfiction',
