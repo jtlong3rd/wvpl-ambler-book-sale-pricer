@@ -21,6 +21,7 @@ export const baseButtonStyling: CSSProperties = {
 interface ItemSpec {
   key: string;
   name: ReactNode;
+  pricingDescription: ReactNode;
   pricingRule: (count: number) => number; 
 }
 
@@ -28,31 +29,37 @@ const itemSpecs: ItemSpec[] = [
   {
     key: 'coffee-table',
     name: 'Coffee Table Books',
+    pricingDescription: '$1.00 each',
     pricingRule: count => count
   },
   {
     key: 'adult-hardcover-nonfiction',
     name: 'General Adult Hardcover and Nonfiction',
+    pricingDescription: '$1.00 each',
     pricingRule: count => count
   },
   {
     key: 'movies',
     name: 'Movies / Music / Video Games',
+    pricingDescription: '$1.00 each',
     pricingRule: count => count
   },
   {
     key: 'trade-paperback',
     name: 'Trade Paperback',
+    pricingDescription: '$0.75 each (3 for $1.00)',
     pricingRule: count => Math.floor(count / 3) * 2 + (count % 3 * 0.75)
   },
   {
     key: 'adult-paperback',
     name: 'General Adult Paperback',
+    pricingDescription: '$0.50 each',
     pricingRule: count => count * 0.5
   },
   {
     key: 'childrens-teens-books',
     name: 'Children\'s / Teen\'s Books',
+    pricingDescription: '$0.50 each',
     pricingRule: count => count * 0.5
   }
 ];
@@ -111,6 +118,7 @@ function App() {
             <Item
               key={itemSpec.key}
               name={itemSpec.name}
+              pricingDescription={itemSpec.pricingDescription}
               count={itemCounts[itemSpec.key]}
               onDecrement={() => setItemCounts(itemCounts => ({
                 ...itemCounts,

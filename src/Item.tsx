@@ -4,12 +4,13 @@ import { baseButtonStyling } from './App';
 
 interface Props {
   name: ReactNode;
+  pricingDescription: ReactNode;
   count: number;
   onIncrement: () => void;
   onDecrement: () => void;
 }
 
-export function Item({ name, count, onIncrement, onDecrement }: Props) {
+export function Item({ name, pricingDescription, count, onIncrement, onDecrement }: Props) {
   return (
     <div
       style={{
@@ -27,6 +28,16 @@ export function Item({ name, count, onIncrement, onDecrement }: Props) {
         }}
       >
         {name}
+        <br />
+        <span
+          style={{
+            fontSize: '0.8em',
+            color: 'gray',
+            whiteSpace: 'nowrap'
+          }}
+        >
+          {pricingDescription}
+        </span>
       </div>
       <div
         style={{
