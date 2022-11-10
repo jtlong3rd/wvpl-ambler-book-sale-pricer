@@ -47,14 +47,8 @@ const itemSpecs: ItemSpec[] = [
   {
     key: 'trade-paperback',
     name: 'Trade Paperback',
-    pricingDescription: (
-      <>
-        $0.75 each
-        <br />
-        (3 for $2.00)
-      </>
-    ),
-    pricingRule: count => Math.floor(count / 3) * 2 + (count % 3 * 0.75)
+    pricingDescription: '$0.75 each',
+    pricingRule: count => count * 0.75
   },
   {
     key: 'adult-paperback',
