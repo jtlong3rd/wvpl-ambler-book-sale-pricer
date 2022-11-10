@@ -61,7 +61,19 @@ const itemSpecs: ItemSpec[] = [
     name: 'Children\'s / Teen\'s Books',
     pricingDescription: '$0.50 each',
     pricingRule: count => count * 0.5
-  }
+  },
+  {
+    key: 'fill-a-bag-early-afternoon',
+    name: 'Fill a Bag (12 - 2 PM)',
+    pricingDescription: '$8 / bag',
+    pricingRule: count => count * 8
+  },
+  {
+    key: 'fill-a-bag-late-afternoon',
+    name: 'Fill a Bag (2 - 4 PM)',
+    pricingDescription: '$5 / bag',
+    pricingRule: count => count * 5
+  },
 ];
 
 const initialCounts = itemSpecs.reduce(
