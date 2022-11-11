@@ -56,13 +56,13 @@ const itemSpecs: ItemSpec<BagSale>[] = [
   },
   {
     key: 'adult-hardcover-nonfiction',
-    name: 'General Adult Hardcover and Nonfiction',
+    name: 'Adult Hardcover and Nonfiction',
     renderPricingDescription: () => '$1.00 each',
     pricingRule: count => count
   },
   {
     key: 'movies',
-    name: 'Movies / Music / Video Games',
+    name: 'Movies / Music',
     renderPricingDescription: () => '$1.00 each',
     pricingRule: count => count
   },
@@ -74,7 +74,7 @@ const itemSpecs: ItemSpec<BagSale>[] = [
   },
   {
     key: 'adult-paperback',
-    name: 'General Adult Paperback',
+    name: 'Adult Paperback',
     renderPricingDescription: () => '$0.50 each',
     pricingRule: count => count * 0.5
   },
