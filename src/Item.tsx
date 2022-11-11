@@ -15,7 +15,7 @@ export function Item({ name, pricingDescription, count, onIncrement, onDecrement
     <div
       style={{
         fontSize: '1.2em',
-        margin: '0.5em 1em',
+        margin: '0.25em 1em',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
