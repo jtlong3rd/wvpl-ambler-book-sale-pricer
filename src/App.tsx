@@ -1,6 +1,7 @@
 import {
   CSSProperties,
   ReactNode,
+  useEffect,
   useMemo,
   useState
 } from 'react';
@@ -26,7 +27,26 @@ interface ItemSpec<T> {
   pricingRule: (count: number, state: T) => number;
 }
 
-const itemSpecs: ItemSpec<TimeOfSale>[] = [
+const bagSaleItemSpec: ItemSpec<BagSale> = {
+  key: 'fill-a-bag',
+  name: 'Fill a Bag',
+  offer: state => (
+    state === 'early-afternoon' ||
+    state === 'late-afternoon'
+  ),
+  renderPricingDescription: state => (
+    state === 'early-afternoon'
+      ? '$8 / bag'
+      : '$5 / bag'
+  ),
+  pricingRule: (count, state) => (
+    state === 'early-afternoon'
+      ? count * 8
+      : count * 5
+  )
+};
+
+const itemSpecs: ItemSpec<BagSale>[] = [
   {
     key: 'coffee-table',
     name: 'Coffee Table Books',
@@ -63,31 +83,13 @@ const itemSpecs: ItemSpec<TimeOfSale>[] = [
     renderPricingDescription: () => '$0.50 each',
     pricingRule: count => count * 0.5
   },
-  {
-    key: 'fill-a-bag',
-    name: 'Fill a Bag',
-    offer: state => (
-      state === 'saturday-early-afternoon' ||
-      state === 'saturday-late-afternoon'
-    ),
-    renderPricingDescription: state => (
-      state === 'saturday-early-afternoon'
-        ? '$8 / bag'
-        : '$5 / bag'
-    ),
-    pricingRule: (count, state) => (
-      state === 'saturday-early-afternoon'
-        ? count * 8
-        : count * 5
-    )
-  },
+  bagSaleItemSpec
 ];
 
-type TimeOfSale =
-  | 'friday'
-  | 'saturday-morning'
-  | 'saturday-early-afternoon'
-  | 'saturday-late-afternoon';
+type BagSale =
+  | 'no-sale'
+  | 'early-afternoon'
+  | 'late-afternoon';
 
 const initialCounts = itemSpecs.reduce(
   (memo, itemSpec) => {
@@ -97,32 +99,65 @@ const initialCounts = itemSpecs.reduce(
   }, {} as Record<string, number>
 );
 
-function getTimeOfSale(): TimeOfSale {
+function getBagSale(): BagSale {
   const time = new Date();
 
   const day = time.getDay();
   const hour = time.getHours();
 
-  return day !== 6
-    ? 'friday'
-    : hour < 12
-    ? 'saturday-morning'
+  return day !== 6 || hour < 12
+    ? 'no-sale'
     : hour < 14
-    ? 'saturday-early-afternoon'
-    : 'saturday-late-afternoon';
+    ? 'early-afternoon'
+    : 'late-afternoon';
 }
 
 function App() {
   const [itemCounts, setItemCounts] = useState(initialCounts);
-  const [timeOfSale, setTimeOfSale] = useState<TimeOfSale>(() => getTimeOfSale());
+  const [bagSale, setBagSale] = useState<BagSale>(getBagSale);
+
+  useEffect(() => {
+    function refreshBagSale() {
+      setBagSale(getBagSale());
+    }
+
+    const secondsToNextMinute = (60 - new Date().getSeconds()) % 60;
+    const millisecondToNextMinute = secondsToNextMinute * 1000;
+
+    let interval: NodeJS.Timer;
+    const timeout = setTimeout(() => {
+      refreshBagSale();
+
+      interval = setInterval(() => {
+        refreshBagSale();
+      }, 60000);
+    }, millisecondToNextMinute);
+
+    return () => {
+      clearTimeout(timeout);
+
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (bagSale === 'no-sale') {
+      setItemCounts(itemCounts => ({
+        ...itemCounts,
+        'fill-a-bag': 0
+      }));
+    }
+  }, [bagSale]);
 
   const total = useMemo(
     () => itemSpecs.reduce(
       (memo, { key, pricingRule }) =>
-        memo + pricingRule(itemCounts[key] ?? 0, timeOfSale),
+        memo + pricingRule(itemCounts[key] ?? 0, bagSale),
       0
     ).toFixed(2),
-    [itemCounts, timeOfSale]
+    [itemCounts, bagSale]
   );
 
   return (
@@ -156,14 +191,14 @@ function App() {
       {
         itemSpecs
           .filter(
-            itemSpec => itemSpec.offer == null || itemSpec.offer(timeOfSale)
+            itemSpec => itemSpec.offer == null || itemSpec.offer(bagSale)
           )
           .map(
             itemSpec => (
               <Item
                 key={itemSpec.key}
                 name={itemSpec.name}
-                pricingDescription={itemSpec.renderPricingDescription(timeOfSale)}
+                pricingDescription={itemSpec.renderPricingDescription(bagSale)}
                 count={itemCounts[itemSpec.key]}
                 onDecrement={() => setItemCounts(itemCounts => ({
                   ...itemCounts,
