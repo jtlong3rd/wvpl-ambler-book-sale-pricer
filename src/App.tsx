@@ -1,5 +1,6 @@
 import {
   CSSProperties,
+  Fragment,
   ReactNode,
   useEffect,
   useMemo,
@@ -194,25 +195,30 @@ function App() {
             itemSpec => itemSpec.offer == null || itemSpec.offer(bagSale)
           )
           .map(
-            itemSpec => (
-              <Item
-                key={itemSpec.key}
-                name={itemSpec.name}
-                pricingDescription={itemSpec.renderPricingDescription(bagSale)}
-                count={itemCounts[itemSpec.key]}
-                onDecrement={() => setItemCounts(itemCounts => ({
-                  ...itemCounts,
-                  [itemSpec.key]: Math.max(
-                    itemCounts[itemSpec.key] - 1,
-                    0
-                  )
-                }))}
-                onIncrement={() => setItemCounts(itemCounts => ({
-                  ...itemCounts,
-                  [itemSpec.key]:
-                    itemCounts[itemSpec.key] + 1,
-                }))}
-              />
+            (itemSpec, i) => (
+              <Fragment key={itemSpec.key}>
+                <div>
+                  <Item
+                    key={itemSpec.key}
+                    name={itemSpec.name}
+                    pricingDescription={itemSpec.renderPricingDescription(bagSale)}
+                    count={itemCounts[itemSpec.key]}
+                    onDecrement={() => setItemCounts(itemCounts => ({
+                      ...itemCounts,
+                      [itemSpec.key]: Math.max(
+                        itemCounts[itemSpec.key] - 1,
+                        0
+                      )
+                    }))}
+                    onIncrement={() => setItemCounts(itemCounts => ({
+                      ...itemCounts,
+                      [itemSpec.key]:
+                        itemCounts[itemSpec.key] + 1,
+                    }))}
+                  />
+                  {i < itemSpecs.length - 1 && <hr />}
+                </div>
+              </Fragment>
             )
         )
       }
