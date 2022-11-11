@@ -169,7 +169,7 @@ function App() {
     >
       <header
         style={{
-          marginBottom: '1em',
+          marginBottom: '0.5em',
           padding: '1em 0',
           display: 'flex',
           justifyContent: 'space-between',
