@@ -122,12 +122,14 @@ function getBagSale(): BagSale {
 
 function App() {
   const [itemCounts, setItemCounts] = useState(initialCounts);
-  const [bagSale, setBagSale] = useState<BagSale>(getBagSale);
+  const [bagSale, setBagSale] = useState<BagSale>("no-sale");
 
   useEffect(() => {
     function refreshBagSale() {
       setBagSale(getBagSale());
     }
+
+    refreshBagSale();
 
     const secondsToNextMinute = (60 - new Date().getSeconds()) % 60;
     const millisecondToNextMinute = secondsToNextMinute * 1000;
