@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface Props {
   total: ReactNode;
@@ -8,14 +8,13 @@ export function Total({ total }: Props) {
   return (
     <span
       style={{
-        margin: '0.5em',
-        fontSize: '1.5em',
-        fontWeight: 'bold',
-        textAlign: 'left'
+        margin: "0.5em",
+        fontSize: "1.5em",
+        fontWeight: "bold",
+        textAlign: "left",
       }}
     >
-      Total:
-      ${total}
+      Total: ${total}
     </span>
   );
 }

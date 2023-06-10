@@ -1,6 +1,6 @@
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, ReactNode } from "react";
 
-import { baseButtonStyling } from './App';
+import { baseButtonStyling } from "./App";
 
 interface Props {
   name: ReactNode;
@@ -19,31 +19,31 @@ export function Item({
   onIncrement,
   onDecrement,
   additionalButtonStyles,
-  additionalCountStyles
+  additionalCountStyles,
 }: Props) {
   return (
     <div
       style={{
-        fontSize: '1.2em',
-        margin: '0.25em 1em',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        maxWidth: '1000px',
+        fontSize: "1.2em",
+        margin: "0.25em 1em",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        maxWidth: "1000px",
       }}
     >
       <div
         style={{
-          fontWeight: 'bold',
+          fontWeight: "bold",
         }}
       >
         {name}
         <br />
         <span
           style={{
-            fontSize: '0.8em',
-            color: 'gray',
-            whiteSpace: 'nowrap'
+            fontSize: "0.8em",
+            color: "gray",
+            whiteSpace: "nowrap",
           }}
         >
           {pricingDescription}
@@ -51,42 +51,44 @@ export function Item({
       </div>
       <div
         style={{
-          whiteSpace: 'nowrap',
-          fontSize: '1.2em'
+          whiteSpace: "nowrap",
+          fontSize: "1.2em",
         }}
       >
         <button
           style={{
             ...baseButtonStyling,
-            width: '60px',
-            height: '60px',
+            width: "60px",
+            height: "60px",
             ...additionalButtonStyles,
           }}
           onClick={onDecrement}
           type="button"
-        ><i className="fa fa-minus fa-lg fa-fw"></i></button>
-        {' '}
+        >
+          <i className="fa fa-minus fa-lg fa-fw"></i>
+        </button>{" "}
         <div
           style={{
-            display: 'inline-block',
-            textAlign: 'center',
-            width: '27.5px',
+            display: "inline-block",
+            textAlign: "center",
+            width: "27.5px",
             ...additionalCountStyles,
           }}
         >
           {count}
-        </div>
-        {' '}
+        </div>{" "}
         <button
           style={{
             ...baseButtonStyling,
-            width: '60px',
-            height: '60px',
+            width: "60px",
+            height: "60px",
             ...additionalButtonStyles,
           }}
           onClick={onIncrement}
           type="button"
-        ><i className="fa fa-plus fa-lg fa-fw"></i></button>
+        >
+          <i className="fa fa-plus fa-lg fa-fw"></i>
+        </button>
       </div>
     </div>
   );
