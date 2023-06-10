@@ -26,6 +26,7 @@ interface ItemSpec<T> {
   offer?: (state: T) => boolean;
   renderPricingDescription: (state: T) => ReactNode;
   pricingRule: (count: number, state: T) => number;
+  additionalButtonStyles?: CSSProperties;
 }
 
 const bagSaleItemSpec: ItemSpec<BagSale> = {
@@ -215,6 +216,7 @@ function App() {
                       [itemSpec.key]:
                         itemCounts[itemSpec.key] + 1,
                     }))}
+                    additionalButtonStyles={itemSpec.additionalButtonStyles}
                   />
                   {i < itemSpecs.length - 1 && <hr />}
                 </div>
