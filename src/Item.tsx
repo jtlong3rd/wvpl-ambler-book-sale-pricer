@@ -56,8 +56,8 @@ export function Item({
         <button
           style={{
             ...baseButtonStyling,
-            width: "36px",
-            height: "36px",
+            width: "48px",
+            height: "48px",
             ...additionalButtonStyles,
           }}
           onClick={onDecrement}
@@ -70,6 +70,7 @@ export function Item({
             display: "inline-block",
             textAlign: "center",
             width: "27.5px",
+            fontSize: "1.25em",
             ...additionalCountStyles,
           }}
         >
@@ -78,8 +79,8 @@ export function Item({
         <button
           style={{
             ...baseButtonStyling,
-            width: "36px",
-            height: "36px",
+            width: "48px",
+            height: "48px",
             ...additionalButtonStyles,
           }}
           onClick={onIncrement}
