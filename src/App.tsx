@@ -82,11 +82,11 @@ const itemSpecs: ItemSpec<BagSale>[] = [
   },
   {
     key: "pink-childrens",
-    name: <span style={{ color: "pink" }}>Children's (Pink)</span>,
+    name: <span style={{ color: "hotpink" }}>Children's (Pink)</span>,
     renderPricingDescription: () => "$0.50 each",
     pricingRule: (count) => count,
-    additionalButtonStyles: { backgroundColor: "pink" },
-    additionalCountStyles: { color: "pink" },
+    additionalButtonStyles: { backgroundColor: "hotpink" },
+    additionalCountStyles: { color: "hotpink" },
   },
   {
     key: "blue-childrens",
