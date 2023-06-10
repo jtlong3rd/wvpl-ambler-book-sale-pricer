@@ -22,15 +22,7 @@ export function Item({
   additionalCountStyles,
 }: Props) {
   return (
-    <div
-      style={{
-        margin: "0.25em 1em",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        maxWidth: "1000px",
-      }}
-    >
+    <div className="mx-4 my-2 max-w-[1000px] flex justify-between items-center">
       <div
         style={{
           fontWeight: "bold",
