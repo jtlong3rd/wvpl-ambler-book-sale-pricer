@@ -9,7 +9,6 @@ export function ResetButton({ onReset }: Props) {
     <button
       style={{
         ...baseButtonStyling,
-        fontSize: "1.1em",
         backgroundColor: "crimson",
         borderRadius: "6px",
         padding: "0.5em 2em",

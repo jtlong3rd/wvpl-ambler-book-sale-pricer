@@ -44,7 +44,12 @@ const itemSpecs: ItemSpec<BagSale>[] = [
   {
     key: "cds-and-dvds",
     name: "CDs and DVDs",
-    renderPricingDescription: () => "$0.50 each; 3 for $1.00",
+    renderPricingDescription: () => (
+      <>
+        <div>$0.50 each</div>
+        <div>3 for $1.00</div>
+      </>
+    ),
     pricingRule: (count) => Math.floor(count / 3) + (count % 3) * 0.5,
   },
   {

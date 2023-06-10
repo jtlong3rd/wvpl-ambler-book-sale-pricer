@@ -24,7 +24,6 @@ export function Item({
   return (
     <div
       style={{
-        fontSize: "1.2em",
         margin: "0.25em 1em",
         display: "flex",
         justifyContent: "space-between",
@@ -52,20 +51,19 @@ export function Item({
       <div
         style={{
           whiteSpace: "nowrap",
-          fontSize: "1.2em",
         }}
       >
         <button
           style={{
             ...baseButtonStyling,
-            width: "60px",
-            height: "60px",
+            width: "36px",
+            height: "36px",
             ...additionalButtonStyles,
           }}
           onClick={onDecrement}
           type="button"
         >
-          <i className="fa fa-minus fa-lg fa-fw"></i>
+          <i className="fa fa-minus fa-fw"></i>
         </button>{" "}
         <div
           style={{
@@ -80,14 +78,14 @@ export function Item({
         <button
           style={{
             ...baseButtonStyling,
-            width: "60px",
-            height: "60px",
+            width: "36px",
+            height: "36px",
             ...additionalButtonStyles,
           }}
           onClick={onIncrement}
           type="button"
         >
-          <i className="fa fa-plus fa-lg fa-fw"></i>
+          <i className="fa fa-plus fa-fw"></i>
         </button>
       </div>
     </div>

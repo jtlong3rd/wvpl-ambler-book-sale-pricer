@@ -8,8 +8,8 @@ export function Total({ total }: Props) {
   return (
     <span
       style={{
-        margin: "0.5em",
-        fontSize: "1.5em",
+        margin: "0.5em 0.75em",
+        fontSize: "1.25em",
         fontWeight: "bold",
         textAlign: "left",
       }}
