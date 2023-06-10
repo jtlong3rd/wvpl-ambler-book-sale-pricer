@@ -27,6 +27,7 @@ interface ItemSpec<T> {
   renderPricingDescription: (state: T) => ReactNode;
   pricingRule: (count: number, state: T) => number;
   additionalButtonStyles?: CSSProperties;
+  additionalCountStyles?: CSSProperties;
 }
 
 const bagSaleItemSpec: ItemSpec<BagSale> = {
@@ -217,6 +218,7 @@ function App() {
                         itemCounts[itemSpec.key] + 1,
                     }))}
                     additionalButtonStyles={itemSpec.additionalButtonStyles}
+                    additionalCountStyles={itemSpec.additionalCountStyles}
                   />
                   {i < itemSpecs.length - 1 && <hr />}
                 </div>

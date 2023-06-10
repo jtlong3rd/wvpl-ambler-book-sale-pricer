@@ -9,6 +9,7 @@ interface Props {
   onIncrement: () => void;
   onDecrement: () => void;
   additionalButtonStyles?: CSSProperties;
+  additionalCountStyles?: CSSProperties;
 }
 
 export function Item({
@@ -17,7 +18,8 @@ export function Item({
   count,
   onIncrement,
   onDecrement,
-  additionalButtonStyles
+  additionalButtonStyles,
+  additionalCountStyles
 }: Props) {
   return (
     <div
@@ -68,7 +70,8 @@ export function Item({
           style={{
             display: 'inline-block',
             textAlign: 'center',
-            width: '27.5px'
+            width: '27.5px',
+            ...additionalCountStyles,
           }}
         >
           {count}
