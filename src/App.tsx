@@ -167,12 +167,7 @@ function App() {
   );
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <div className="flex flex-col">
       <header
         style={{
           marginBottom: "0.5em",

@@ -37,7 +37,7 @@ export default function Root() {
         <Links />
         <title>Book Sale Pricer</title>
       </head>
-      <body className="m-0">
+      <body>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
