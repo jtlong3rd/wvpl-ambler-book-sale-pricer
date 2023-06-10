@@ -51,28 +51,22 @@ const bagSaleItemSpec: ItemSpec<BagSale> = {
 
 const itemSpecs: ItemSpec<BagSale>[] = [
   {
-    key: 'coffee-table',
-    name: 'Coffee Table Books',
-    renderPricingDescription: () => '$1.00 each',
-    pricingRule: count => count
+    key: 'cds-and-dvds',
+    name: 'CDs and DVDs',
+    renderPricingDescription: () => '$0.50 each; 3 for $1.00',
+    pricingRule: count => Math.floor(count / 3) + count % 3 * 0.50
   },
   {
     key: 'adult-hardcover-nonfiction',
-    name: 'Adult Hardcover and Nonfiction',
-    renderPricingDescription: () => '$1.00 each',
-    pricingRule: count => count
-  },
-  {
-    key: 'movies',
-    name: 'Movies / Music',
+    name: 'Hardcover',
     renderPricingDescription: () => '$1.00 each',
     pricingRule: count => count
   },
   {
     key: 'trade-paperback',
     name: 'Trade Paperback',
-    renderPricingDescription: () => '$0.75 each',
-    pricingRule: count => count * 0.75
+    renderPricingDescription: () => '$1.00 each',
+    pricingRule: count => count
   },
   {
     key: 'adult-paperback',
@@ -81,10 +75,28 @@ const itemSpecs: ItemSpec<BagSale>[] = [
     pricingRule: count => count * 0.5
   },
   {
-    key: 'childrens-teens-books',
-    name: 'Children\'s / Teen\'s Books',
+    key: 'yellow-green-childrens',
+    name: <span style={{ color: 'yellowgreen' }}>Children's (Yellow / Green)</span>,
+    renderPricingDescription: () => '$0.25 each',
+    pricingRule: count => count,
+    additionalButtonStyles: { backgroundColor: 'yellowgreen' },
+    additionalCountStyles: { color: 'yellowgreen' }
+  },
+  {
+    key: 'pink-childrens',
+    name: <span style={{ color: 'pink' }}>Children's (Pink)</span>,
     renderPricingDescription: () => '$0.50 each',
-    pricingRule: count => count * 0.5
+    pricingRule: count => count,
+    additionalButtonStyles: { backgroundColor: 'pink' },
+    additionalCountStyles: { color: 'pink' }
+  },
+  {
+    key: 'blue-childrens',
+    name: <span style={{ color: 'blue' }}>Children's (Blue)</span>,
+    renderPricingDescription: () => '$1.00 each',
+    pricingRule: count => count,
+    additionalButtonStyles: { backgroundColor: 'blue' },
+    additionalCountStyles: { color: 'blue' }
   },
   bagSaleItemSpec
 ];
