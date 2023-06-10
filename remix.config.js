@@ -2,6 +2,7 @@
 module.exports = {
   serverModuleFormat: "cjs",
   watchPaths: ["./src/*"],
+  tailwind: true,
 
   future: {
     v2_errorBoundary: true,
