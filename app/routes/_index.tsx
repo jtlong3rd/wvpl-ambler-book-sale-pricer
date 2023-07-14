@@ -1,5 +1,9 @@
 import { HeadersFunction, json, LoaderArgs } from "@vercel/remix";
 
+export const config = {
+  runtime: "edge",
+};
+
 export async function loader(_: LoaderArgs) {
   await new Promise((resolve) => {
     setTimeout(resolve, 1000);
