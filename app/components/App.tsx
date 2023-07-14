@@ -101,11 +101,14 @@ const itemSpecs: ItemSpec<BagSale>[] = [
 
 type BagSale = "no-sale" | "early-afternoon" | "late-afternoon";
 
-const initialCounts = itemSpecs.reduce((memo, itemSpec) => {
-  memo[itemSpec.key] = 0;
+const initialCounts = itemSpecs.reduce(
+  (memo, itemSpec) => {
+    memo[itemSpec.key] = 0;
 
-  return memo;
-}, {} as Record<string, number>);
+    return memo;
+  },
+  {} as Record<string, number>,
+);
 
 function getBagSale(): BagSale {
   const time = new Date();
@@ -167,10 +170,10 @@ function App() {
         .reduce(
           (memo, { key, pricingRule }) =>
             memo + pricingRule(itemCounts[key] ?? 0, bagSale),
-          0
+          0,
         )
         .toFixed(2),
-    [itemCounts, bagSale]
+    [itemCounts, bagSale],
   );
 
   return (

@@ -1,7 +1,6 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
   serverModuleFormat: "cjs",
-  watchPaths: ["./src/*"],
   tailwind: true,
 
   future: {
@@ -10,6 +9,6 @@ module.exports = {
     v2_meta: true,
     v2_headers: true,
     v2_routeConvention: true,
-    v2_dev: false,
+    v2_dev: true,
   },
 };

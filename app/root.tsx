@@ -7,11 +7,11 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import oldStylesUrl from "~/src/index.css";
+import legacyStylesUrl from "~/app/legacy-styles.css";
 import tailwindStylesUrl from "~/app/tailwind.css";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: oldStylesUrl },
+  { rel: "stylesheet", href: legacyStylesUrl },
   { rel: "stylesheet", href: tailwindStylesUrl },
 ];
 
