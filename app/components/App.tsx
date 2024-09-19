@@ -76,7 +76,7 @@ const itemSpecs: ItemSpec<BagSale>[] = [
       <span style={{ color: "yellowgreen" }}>Children's (Yellow / Green)</span>
     ),
     renderPricingDescription: () => "$0.25 each",
-    pricingRule: (count) => count,
+    pricingRule: (count) => count * 0.25,
     additionalButtonStyles: { backgroundColor: "yellowgreen" },
     additionalCountStyles: { color: "yellowgreen" },
   },
@@ -84,7 +84,7 @@ const itemSpecs: ItemSpec<BagSale>[] = [
     key: "pink-childrens",
     name: <span style={{ color: "hotpink" }}>Children's (Pink)</span>,
     renderPricingDescription: () => "$0.50 each",
-    pricingRule: (count) => count,
+    pricingRule: (count) => count * 0.5,
     additionalButtonStyles: { backgroundColor: "hotpink" },
     additionalCountStyles: { color: "hotpink" },
   },
